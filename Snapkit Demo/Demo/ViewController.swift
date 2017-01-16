@@ -36,9 +36,10 @@ class ViewController: UIViewController {
         blueView.addConstraint(widthConstraint)
         let heightConstraint = NSLayoutConstraint(item: blueView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
         blueView.addConstraint(heightConstraint)
-
+        
         // iOS 8
-        NSLayoutConstraint(item: blueView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+        let centerXConstraint = NSLayoutConstraint(item: blueView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
+        centerXConstraint.isActive = true
         NSLayoutConstraint(item: blueView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
     }
     
@@ -53,8 +54,7 @@ class ViewController: UIViewController {
     func snapkitWay() {
         blueView.snp.makeConstraints { (make) in
             make.width.height.equalTo(100)
-            make.center.equalTo(self.view.center)
-            //equalToSuperview()
+            make.center.equalToSuperview()
         //make.width.equalTo(view).multipliedBy(2).offset(1).priority(800).labeled("BlueViewWidth")
         }
     }
